@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Arcade Character Generator</title>
+    <style>
+    .on {
+    background: black;
+}
+
+.off {
+    background: red;
+}
+
+.block {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-bottom: -5px ;
+}
+    
+    </style>
+</head>
+<body>
+    <div class="arcade"></div>
+    <script>
+        let arrleft = [];
+        let arrTemp = [];
+        let arrEnd = [];
+        let arcadeCh = document.querySelector('.arcade');
+        
+        for(let i=0; i < 18; i++ ){
+             for(let j = 0; j < 9; j++){
+                let tempStr = "";
+                let onOrOff = Math.round(Math.random());
+                if (onOrOff == 1){
+                    tempStr += '<div class="block on"></div>'
+                }
+                else {
+                    tempStr += '<div class="block off"></div>'
+                }
+                arrleft.push(tempStr);
+            }
+            arrTemp = arrleft.slice(0,8).reverse();
+            arrleft += arrTemp;
+            arrEnd += arrleft.toString().replace(/,/g,'');
+            arrEnd += '<br>';
+            arrTemp = [];
+            arrleft =[];
+         }
+    arcadeCh.innerHTML = arrEnd;
+     </script>
+</body>
+</html>

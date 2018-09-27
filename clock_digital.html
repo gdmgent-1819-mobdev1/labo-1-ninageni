@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Digital clock</title>
+</head>
+<body onload="startTime()">
+    <div id="txt"></div>
+    <script>
+            function startTime() {
+                let today = new Date();
+                let h = today.getHours();
+                let m = today.getMinutes();
+                let s = today.getSeconds();
+                m = checkTime(m);
+                s = checkTime(s);
+                
+                
+          
+            let newyork = h -6;
+            switch(newyork){
+                case -1:
+                newyork = 23;
+                break;
+                case -2:
+                newyork = 22;
+                break;
+                case -3:
+                newyork = 21;
+                break;
+                case -4:
+                newyork = 20;
+                break;
+                case -5:
+                newyork = 19;
+                break;
+                case -6:
+                newyork = 18;
+                break;
+                default:
+                break;
+            }
+
+            document.getElementById('txt').innerHTML = "Tijd Brussel " + h + ":" + m + ":" + s + "<br>" + "Tijd New York " + newyork + ":" + m + ":" + s;
+
+            let t = setTimeout(startTime, 500);
+        }
+        function checkTime(i) {
+                if (i < 10) {i = "0" + i};  
+                return i;
+            }
+            
+
+
+    </script>
+    
+</body>
+</html>
+
